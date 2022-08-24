@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void dfs(int& count, int& cur, int target, vector<int> k,int& ans)
+{
+	if (cur == target)
+	{
+		if (ans > count)
+			ans = count;
+	}
+	count++;
+	if (k.size() > cur + k[cur] && k.size() > cur)
+	{
+		cur = cur + k[cur];
+		dfs(count, cur  , target, k, ans);
+	}
+	else if (cur - k[cur] > 0)
+	{
+		cur = cur - k[cur];
+		dfs(count, cur, target, k, ans);
+	}
+	return;
+}
+int main()
+{
+	int n, a, b, count = 0;
+	cin >> n >> a >> b;
+	int target = b,ans=n+1,cur=a;
+	vector<int> k;
+	k.push_back(-1);
+	for (int i = 0; i < n; i++)
+	{
+		int p;
+		cin >> p;
+		k.push_back(p);
+	}
+	dfs(count, cur, target, k, ans);
+	cout << ans;
+	return 0;
+}
