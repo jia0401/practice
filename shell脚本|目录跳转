@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $prepath
+
+#!/bin/bash
+prepath=`pwd`
